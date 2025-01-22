@@ -675,6 +675,13 @@ static bool on_draw_indexed(command_list *cmd_list, uint32_t indices, uint32_t i
 
 	return false;
 }
+static bool on_dispatch_mesh(command_list *cmd_list, uint32_t group_count_x, uint32_t group_count_y, uint32_t group_count_z)
+{
+	on_draw(cmd_list, group_count_x * group_count_y * group_count_z, 1, 0, 0);
+
+	return false;
+}
+
 static bool on_draw_indirect(command_list *cmd_list, indirect_command type, resource, uint64_t, uint32_t draw_count, uint32_t)
 {
 	if (type == indirect_command::dispatch)
@@ -1383,6 +1390,7 @@ void register_addon_depth()
 
 	reshade::register_event<reshade::addon_event::draw>(on_draw);
 	reshade::register_event<reshade::addon_event::draw_indexed>(on_draw_indexed);
+    reshade::register_event<reshade::addon_event::dispatch_mesh>(on_dispatch_mesh);
 	reshade::register_event<reshade::addon_event::draw_or_dispatch_indirect>(on_draw_indirect);
 	reshade::register_event<reshade::addon_event::bind_viewports>(on_bind_viewport);
 	reshade::register_event<reshade::addon_event::begin_render_pass>(on_begin_render_pass_with_depth_stencil);
@@ -1417,6 +1425,7 @@ void unregister_addon_depth()
 
 	reshade::unregister_event<reshade::addon_event::draw>(on_draw);
 	reshade::unregister_event<reshade::addon_event::draw_indexed>(on_draw_indexed);
+    reshade::unregister_event<reshade::addon_event::dispatch_mesh>(on_dispatch_mesh);
 	reshade::unregister_event<reshade::addon_event::draw_or_dispatch_indirect>(on_draw_indirect);
 	reshade::unregister_event<reshade::addon_event::bind_viewports>(on_bind_viewport);
 	reshade::unregister_event<reshade::addon_event::begin_render_pass>(on_begin_render_pass_with_depth_stencil);
