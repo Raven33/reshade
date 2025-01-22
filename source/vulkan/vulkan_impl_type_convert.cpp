@@ -2058,6 +2058,8 @@ auto reshade::vulkan::convert_query_type(api::query_type type) -> VkQueryType
 	case api::query_type::stream_output_statistics_2:
 	case api::query_type::stream_output_statistics_3:
 		return VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT;
+	case api::query_type::mesh_shader:
+		return VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT;
 	default:
 		assert(false);
 		return VK_QUERY_TYPE_MAX_ENUM;
@@ -2079,6 +2081,9 @@ auto reshade::vulkan::convert_query_type(VkQueryType type, uint32_t index) -> ap
 	case VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT:
 		assert(index <= 3);
 		return static_cast<api::query_type>(static_cast<uint32_t>(api::query_type::stream_output_statistics_0) + index);
+	case VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT:
+		assert(index == 0);
+		return api::query_type::mesh_shader;
 	default:
 		assert(false);
 		return static_cast<api::query_type>(UINT32_MAX);

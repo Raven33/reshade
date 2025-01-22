@@ -1175,7 +1175,9 @@ namespace reshade { namespace api
 		stream_output_statistics_0 = 4,
 		stream_output_statistics_1,
 		stream_output_statistics_2,
-		stream_output_statistics_3
+		stream_output_statistics_3,
+
+	    mesh_shader = 8
 	};
 
 	/// <summary>
