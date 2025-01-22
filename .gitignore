@@ -31,6 +31,9 @@ packages/
 # Visual Studio Code
 .vscode/
 
+# Rider
+.idea/
+
 # Code signing
 *.pfx
 *.pvk
@@ -43,3 +46,7 @@ Thumbs.db
 /res/[Vv]ersion.h
 /setup/*.ini
 /setup/Properties/AssemblyInfo.cs
+
+# shader
+/res/shaders/*.spv
+*.spv
