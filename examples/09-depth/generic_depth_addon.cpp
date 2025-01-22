@@ -833,8 +833,9 @@ static void on_present(command_queue *, swapchain *swapchain, const rect *, cons
 		return;
 
 	// Also skip update when there has been very little activity (special case for emulators like PCSX2 which may present more often than they render a frame)
+    /*
 	if (queue_state.counters_per_used_depth_stencil.size() == 1 && queue_state.counters_per_used_depth_stencil.begin()->second.total_stats.drawcalls <= 8)
-		return;
+		return;*/
 
 	device_data.frame_index++;
 
@@ -1435,7 +1436,7 @@ void unregister_addon_depth()
 
 #ifndef BUILTIN_ADDON
 
-extern "C" __declspec(dllexport) const char *NAME = "Generic Depth";
+extern "C" __declspec(dllexport) const char *NAME = "Generic Depth (Equine Fix)";
 extern "C" __declspec(dllexport) const char *DESCRIPTION = "Automatic depth buffer detection that works in the majority of games.";
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD fdwReason, LPVOID)

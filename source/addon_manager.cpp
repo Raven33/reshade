@@ -154,7 +154,7 @@ void reshade::load_addons()
 
 #if 1
 	{	addon_info &info = addon_loaded_info.emplace_back();
-		info.name = "Generic Depth";
+		info.name = "Generic Depth (Equine Fix)";
 		info.description = "Automatic depth buffer detection that works in the majority of games.";
 		info.file = g_reshade_dll_path.filename().u8string();
 		info.author = "crosire";
